@@ -11,11 +11,6 @@ class SamlController extends AbstractController
 {
     public function loginAction(Request $request)
     {
-        // MRB EDIT START
-        $coreSession = $this->container->get('mrb_core.core_session_helper')->setCoreSession();
-        $coreManager = $this->container->get('mrb_core.core_helper')->setCoreManager($coreSession);
-        // MRB EDIT END
-                
         $session = $request->getSession();
         $authErrorKey = Security::AUTHENTICATION_ERROR;
 
@@ -37,11 +32,6 @@ class SamlController extends AbstractController
 
     public function metadataAction()
     {
-        // MRB EDIT START
-        $coreSession = $this->container->get('mrb_core.core_session_helper')->setCoreSession();
-        $coreManager = $this->container->get('mrb_core.core_helper')->setCoreManager($coreSession);
-        // MRB EDIT END
-
         $auth = $this->get('onelogin_auth');
         $metadata = $auth->getSettings()->getSPMetadata();
 
