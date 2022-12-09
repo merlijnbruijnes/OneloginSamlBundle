@@ -69,6 +69,10 @@ class SamlProvider implements AuthenticationProviderInterface
 
     protected function retrieveUser($token)
     {
+        /* MRB EDIT START */
+        $this->userFactory->createUser($token);
+        /* MRB EDIT END */
+
         try {
             return $this->userProvider->loadUserByUsername($token->getUsername());
         } catch (UsernameNotFoundException $e) {
